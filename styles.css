@@ -1,0 +1,33 @@
+:root{--bg:#faf8f2;--ink:#1d1d1a;--mut:#6b675e;--line:#e7e1d3;--acc:#c2410c;--acc2:#1d4ed8;--ok:#15803d;--bad:#b91c1c;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.top{display:flex;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5;flex-wrap:wrap}
+.brand{display:flex;gap:10px;align-items:center}.mark{background:var(--ink);color:#fff;font-weight:800;padding:6px 9px;border-radius:8px}
+.brand small{display:block;color:var(--mut)}.topstats{display:flex;gap:12px;margin-left:auto;color:var(--mut);font-size:14px;flex-wrap:wrap}
+.topactions{display:flex;gap:8px}button{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:14px}
+button.ghost{background:transparent;color:var(--ink)}
+button.mini{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:13px}
+.tabs{display:flex;gap:6px;padding:10px 16px;border-bottom:1px solid var(--line);overflow-x:auto;position:sticky;top:57px;background:var(--bg);z-index:4}
+.tabs button{background:#fff;color:var(--ink);border:1px solid var(--line)}.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+main{max-width:1020px;margin:0 auto;padding:20px 16px 60px}.pane{display:none}.pane.on{display:block}
+.lede{color:var(--mut);max-width:70ch}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.sched li{margin:7px 0}.note{color:var(--mut);font-size:14px}code{background:#f1ede1;padding:1px 6px;border-radius:6px}
+.filters,.drillbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.filters button,.drillbar select{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.filters button.on{background:var(--ink);color:#fff}input[type=search],select{font-size:14px}
+.clock{font-variant-numeric:tabular-nums;font-weight:700;background:#1d1d1a;color:#fff;padding:5px 10px;border-radius:8px}
+.type{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px;margin:10px 0}
+.type h3{margin:0 0 4px}.pill{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:99px;padding:2px 9px;margin:2px 4px 2px 0;color:var(--mut)}
+.pill.hot{border-color:var(--acc);color:var(--acc);font-weight:700}.type ol{margin:8px 0}.type .cue{background:#fef3c7;border:1px solid #f5d67b;border-radius:8px;padding:6px 10px;margin:8px 0}
+.q{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px;margin:12px 0}.q.flagged{outline:2px solid var(--acc2)}
+.qmeta{display:flex;gap:8px;flex-wrap:wrap;color:var(--mut);font-size:13px;margin-bottom:6px}.q h3{margin:6px 0}.opts{display:grid;gap:6px;margin:10px 0}
+.opts label{border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;gap:8px;cursor:pointer}.opts label.sel{border-color:var(--ink);background:#f6f4ec}
+.q input[type=text]{width:180px;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:15px}
+.qactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.fb{border-radius:8px;padding:10px 12px;margin-top:10px}.fb.ok{background:#ecfdf5;border:1px solid #86efac}.fb.no{background:#fef2f2;border:1px solid #fca5a5}
+.fb small{color:var(--mut)}.trapref{font-size:13px;color:var(--acc)}
+.flashwrap{max-width:640px}.flash{min-height:220px;background:#fff;border:2px solid var(--ink);border-radius:14px;padding:26px;font-size:19px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
+.flashnav{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.flashnav button{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.vault-item{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;margin:8px 0}.vault-item code{display:block;background:#111;color:#ffe9c9;padding:8px 10px;border-radius:8px;white-space:pre-wrap;cursor:pointer}
+.trap{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;margin:8px 0}.trap b{color:var(--bad)}
+footer{border-top:1px solid var(--line);padding:16px;color:var(--mut);font-size:13px;text-align:center}
+@media print{.top,.tabs,footer,.qactions,.flashnav,.drillbar button{display:none!important}.pane{display:block!important}}

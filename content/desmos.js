@@ -1,0 +1,20 @@
+window.MARATHON_DESMOS = [
+{tag:"Vertex form → answer off screen",code:"y=(x-3)^2-4",why:"Vertex visibly (3,−4). Minimum is −4 at x=3. No completing square by hand."},
+{tag:"System solution = crossing",code:"y_1=2x-3\ny_2=-x+6",why:"Every intersection is one (x,y) solution. Count crossings after zooming."},
+{tag:"Solve one equation",code:"solve(x^2-5x+6,x)",why:"Returns 2 and 3. Verify fractions vs decimals."},
+{tag:"Count of solutions",code:"y_1=x^2-4\ny_2=k",why:"Slider k: two solutions when k>−4, one when k=−4, none when k<−4."},
+{tag:"Inequality shading",code:"abs(x-3)<7",why:"Shaded region is the solution set: −4 < x < 10. Read endpoints."},
+{tag:"Statistics arithmetic",code:"mean([1,5,5,10])\nmedian([1,5,5,10])\nstdevp([1,5,5,10])",why:"Type list in brackets. Use stdevp for full population."},
+{tag:"Linear regression",code:"y_1 ~ m x_1 + b",why:"Put data in table with headers x_1,y_1. Read m and b directly."},
+{tag:"Quadratic regression",code:"y_1 ~ a x_1^2 + b x_1 + c",why:"Three parameters. Read a to know opening direction."},
+{tag:"Exponential regression",code:"y_1 ~ a b^{x_1}",why:"a = value at x=0, b = growth factor. Zoom to check fit."},
+{tag:"Radius of a circle",code:"(x+2)^2+(y-5)^2=16",why:"Center (−2,5), radius 4. Complete the square first if needed."},
+{tag:"Distance & midpoint",code:"A=(2,5)\nB=(-1,3)\ndistance(A,B)\nmidpoint(A,B)",why:"Fast geometry without formula errors."},
+{tag:"Polygon area",code:"polygon((0,0),(4,0),(4,3),(0,3))",why:"Click the polygon label: area and perimeter shown."},
+{tag:"Slider for parameter",code:"k=1{-5<k<5}\ny_1=x^2+kx+4",why:"Drag k until discriminant picture matches 'one solution' → k=±4."},
+{tag:"Clip graph to interval",code:"y=(x^2-4)/(x-2)\ny_1=x+2{-3<x<3}",why:"Braces restrict domain — essential for rational functions."},
+{tag:"Table from function",code:"f(x)=x^2-4x+7\ntable(f(x),x,0,8,1)",why:"Instantly evaluate values and spot sequence trend."},
+{tag:"Fill between curves (area idea)",code:"y_1=x^2\ny_2=4-x^2\ny_1<y<=y_2",why:"Shaded lens = region between. Compare sizes visually."},
+{tag:"Absolute value vertex",code:"y=|2x-5|+1",why:"V-shape vertex at (5/2,1). Minimum value 1."},
+{tag:"Piecewise function",code:"y_1={x<0:2x+1, 0<=x<=3:x^2, x>3:6}",why:"Paste the definition; read left/right/middle rules."}
+];

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SAT 24H Marathon — 1300+ Sprint</title>
+<meta name="description" content="Last-day Digital SAT sprint: unchanging question types, timed drills, flashcards, formulas, Desmos moves, traps, mini-mock." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark">24H</span><div><strong>SAT Marathon</strong><small>1300+ sprint · RW + Math · offline</small></div></div>
+  <div class="topstats"><span id="statDone">0 answered</span><span id="statAcc">— accuracy</span><span id="statMiss">0 misses</span></div>
+  <div class="topactions"><button id="btnPrint" type="button">Print cheat sheet</button><button id="btnReset" type="button" class="ghost">Reset</button></div>
+</header>
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button data-tab="plan" class="on" role="tab">Sprint Plan</button>
+  <button data-tab="types" role="tab">Types</button>
+  <button data-tab="drills" role="tab">Drills</button>
+  <button data-tab="cards" role="tab">Flashcards</button>
+  <button data-tab="formula" role="tab">Formulas</button>
+  <button data-tab="desmos" role="tab">Desmos</button>
+  <button data-tab="traps" role="tab">Traps</button>
+  <button data-tab="strategy" role="tab">Strategies</button>
+  <button data-tab="mock" role="tab">Mini-Mock</button>
+  <button data-tab="exam" role="tab">Exam Day</button>
+</nav>
+<main id="main">
+  <section id="tab-plan" class="pane on">
+    <h1>The 24-hour plan that actually moves scores</h1>
+    <p class="lede">1300+ = unlock Hard Module 2 in both sections, then win the 8 highest-yield types. Everything else is optional.</p>
+    <div class="grid2">
+      <div class="card"><h2>Score math</h2><p>RW 200–800 + Math 200–800. 650+650 = 1300. You need roughly <strong>85% on high-yield types</strong> with Hard Module 2 unlocked. A miss on a Hard Q costs the same as a miss on an Easy Q — so <strong>no careless errors on Easy/Medium</strong> first.</p><p>Pacing: RW ~71s/Q (32 min per 27Q module) · Math ~95s/Q (35 min per 22Q module). Guess — no penalty.</p></div>
+      <div class="card"><h2>How to use this folder today</h2><ol><li>Read <strong>Types</strong> for 45 min (recognition cues only).</li><li><strong>Drills → Hard only</strong>, timed, 25-min blocks. Log every miss.</li><li><strong>Flashcards → miss-only</strong> between blocks.</li><li><strong>Mini-Mock</strong> twice (morning + evening).</li><li>Last hour: <strong>Traps + Formulas</strong> only. No new questions.</li></ol></div>
+    </div>
+    <h2>Hour-by-hour</h2>
+    <ol class="sched">
+      <li><b>H0–H1</b> — Diagnostic: Drills → 10 RW + 10 Math, mixed, timed. Tag your 3 weakest types.</li>
+      <li><b>H1–H5</b> — Math sprint: Types linear/systems → quadratics → exponents → %/ratio. 3 drills per type, then 1 mixed.</li>
+      <li><b>H5–H9</b> — RW sprint: Boundaries → Transitions → Vocab → Main Idea/Inference. Same 3+1 pattern.</li>
+      <li><b>H9–H11</b> — Drill set 1 (Hard only, 25 min each). Flashcards between sets.</li>
+      <li><b>H11–H12</b> — Review misses. Copy each trap ID onto paper once.</li>
+      <li><b>SLEEP 7–8h</b> — Non-negotiable. Memory consolidates; late-night new content hurts.</li>
+      <li><b>H+1</b> — Mini-Mock #1 (35 min). Review 30 min.</li>
+      <li><b>H+2</b> — Weakest-type drills only.</li>
+      <li><b>H+3</b> — Mini-Mock #2. Review 20 min.</li>
+      <li><b>Last 60 min</b> — Formulas print + Traps + Desmos vault. Exam Day checklist. Stop.</li>
+    </ol>
+    <p class="note">Full text version: <code>content/schedule.md</code>. Official timed practice lives in your <code>sat-practice-test-*.pdf</code> one folder up — use tests 9–11 for full-length rehearsal.</p>
+  </section>
+  <section id="tab-types" class="pane">
+    <h1>Unchanging question types</h1>
+    <p class="lede">Same stem, same job, every test. Learn the cue → run the steps → dodge the listed wrong-answer shape.</p>
+    <div class="filters"><button data-tfilter="all" class="on">All</button><button data-tfilter="RW">RW only</button><button data-tfilter="Math">Math only</button><button data-tfilter="high">High-yield first</button><input id="tsearch" type="search" placeholder="Search types… e.g. boundary, quadratic" /></div>
+    <div id="typeList"></div>
+  </section>
+  <section id="tab-drills" class="pane">
+    <h1>Timed drills</h1>
+    <div class="drillbar">
+      <select id="dSection" aria-label="Section"><option value="all">RW + Math</option><option value="RW">RW only</option><option value="Math">Math only</option></select>
+      <select id="dType" aria-label="Type"><option value="all">All types</option></select>
+      <select id="dDiff" aria-label="Difficulty"><option value="all">All levels</option><option value="Medium">Medium</option><option value="Hard">Hard</option></select>
+      <label class="chk"><input type="checkbox" id="dHard" /> Hard only</label>
+      <label class="chk"><input type="checkbox" id="dTimer" checked /> Timer</label>
+      <button id="dShuffle" type="button">Shuffle</button>
+      <span id="dClock" class="clock">00:00</span>
+    </div>
+    <div id="drillList"></div>
+  </section>
+  <section id="tab-cards" class="pane">
+    <h1>Flashcards</h1>
+    <div class="drillbar"><button id="cShuffle" type="button">Shuffle</button><label class="chk"><input type="checkbox" id="cMiss" /> Miss-only</label><span id="cCount"></span></div>
+    <div id="cardBox" class="flashwrap"><div id="flash" class="flash" tabindex="0" role="button" aria-label="Flashcard, activate to flip"><div id="flashFront"></div><div id="flashBack" hidden></div></div>
+    <div class="flashnav"><button id="cPrev" type="button">← Prev</button><button id="cFlip" type="button">Flip (Space)</button><button id="cKnow" type="button">I know this ✓</button><button id="cMissBtn" type="button">Miss ✗</button><button id="cNext" type="button">Next →</button></div></div>
+  </section>
+  <section id="tab-formula" class="pane">
+    <h1>Formulas — print this</h1>
+    <p class="lede">One page per section. If you know these cold, you can solve 80% of Math and classify 80% of RW grammar.</p>
+    <div id="formulaBox"></div>
+  </section>
+  <section id="tab-desmos" class="pane">
+    <h1>Desmos vault — copy, paste, read</h1>
+    <p class="lede">From your <code>SATDesmos</code> handbook, compressed to what pays in 24h. Calculator allowed on <strong>all 44 Math Q</strong>. Graph by default; algebra confirms exact values.</p>
+    <input id="vsearch" type="search" placeholder="Search moves… e.g. regress, inequality, slider" />
+    <div id="vault"></div>
+  </section>
+  <section id="tab-traps" class="pane">
+    <h1>Trap list — the 30 ways the test steals points</h1>
+    <p class="lede">Read each bait → run the 5-second check. Every drill question links to one trap ID.</p>
+    <input id="trapSearch" type="search" placeholder="Search traps… e.g. percent, comma, extraneous" />
+    <div id="trapList"></div>
+  </section>
+  <section id="tab-strategy" class="pane">
+    <h1>Proven strategies (what experts actually agree on)</h1>
+    <p class="lede">These are the approaches most respected SAT tutors and test-prep orgs converge on. They are habits, not hacks — drill them until automatic.</p>
+    <div class="card"><h2>RW strategies</h2>
+      <ul>
+        <li><strong>Predict before you look.</strong> For Vocab-in-context, cover the choices and say the blank's job in your own words, then match one exact choice. (Expert consensus: predicting kills the 'it sounds right' trap.)</li>
+        <li><strong>Read for argument structure.</strong> For Main Idea / Inference, ask: claim → evidence → implication. If a choice adds a new claim, it is wrong.</li>
+        <li><strong>Transition = relationship, not vocabulary.</strong> State the relationship first: same, opposite, cause, example, sequence. Then pick the connector whose core meaning matches.</li>
+        <li><strong>Purpose questions: what does it DO?</strong> Not what it says, what it proves, or what it mentions. Name its role in the paragraph, then match.</li>
+        <li><strong>Grammar: find the subject, then the anchor.</strong> Agreement, tense, pronoun reference all attach to the same noun. Cross out prepositional phrases before deciding.</li>
+        <li><strong>Boundaries: classify each side first.</strong> Independent or dependent clause? That one test eliminates most punctuation errors.</li>
+      </ul>
+    </div>
+    <div class="card"><h2>Math strategies</h2>
+      <ul>
+        <li><strong>Start with structure, not arithmetic.</strong> Linear? Quadratic? Exponential? Name the type, then choose the fastest tool: Desmos graph, symbolic solve, or arithmetic.</li>
+        <li><strong>Use Desmos for intersections, not expressions.</strong> Graph both sides, read the crossing. When the answer is symbolic, use <code>solve(...)</code> or regression to confirm.</li>
+        <li><strong>Always check the domain.</strong> Even in rational and radical equations: original denominators ≠ 0. Reject any candidate that breaks it.</li>
+        <li><strong>Percent/ratio: write the equation in words.</strong> 'is' = '=', 'of' = '×', 'percent' = '/100', 'more than' = '+', 'times as much' = '×'. Most errors are word-parsing errors.</li>
+        <li><strong>Geometry: mark what you know.</strong> Add tick marks for equal lengths, label angles, write the radius before touching an arc/sector.</li>
+        <li><strong>Data questions: units, direction, conditions.</strong> Correct answer must match every stated qualifier. A true statement with a wrong qualifier is the classic distractor.</li>
+      </ul>
+    </div>
+    <div class="card"><h2>Test-day habits</h2>
+      <ul>
+        <li><strong>Flag aggressively.</strong> If you are not 80% sure within 30 seconds, mark it and move. Return with 5–10 minutes left.</li>
+        <li><strong>Never leave anything blank.</strong> Wrong and unanswered score the same — so guess. Then review only flagged items.</li>
+        <li><strong>Pacing checkpoints.</strong> RW: ~27 Q in 32 min → ~70s/Q. Math: ~22 Q in 35 min → ~95s/Q. If one question is eating your buffer, bank the next three instead.</li>
+        <li><strong>Desmos > algebra when the answer is a coordinate or value.</strong> Use symbolic algebra when the answer is an expression, parameter, or inequality.</li>
+        <li><strong>Take the real breaks.</strong> Two sections with a 10-minute break between them is designed fatigue management. Use it for water and reset, not review.</li>
+      </ul>
+    </div>
+    <div class="card"><h2>Study method (spaced + tested)</h2>
+      <ul>
+        <li><strong>Alternate study / test / review.</strong> Read a type card → do 3 from that type → review every miss. Passive re-reading without testing does not move scores.</li>
+        <li><strong>Keep an error log with cause tags.</strong> Boundary, vocab, inference, system, trig, arithmetic. Most people have only 3–5 real causes — drill those, skip the rest.</li>
+        <li><strong>Sleep is the last-minute strategy.</strong> The night before: no new topics after 8pm. Test day is retrieval, not learning.</li>
+      </ul>
+    </div>
+  </section>
+  <section id="tab-mock" class="pane">
+    <h1>Mini-Mock — 20Q / 35 min</h1>
+    <p class="lede">Sampler from the bank at 1300 pace (~105s/Q). Not a full Bluebook module — use PDFs 9–11 upstairs for full length.</p>
+    <div class="drillbar"><button id="mStart" type="button">Start Mini-Mock</button><button id="mQuit" type="button" class="ghost">Quit</button><span id="mClock" class="clock">35:00</span><span id="mScore"></span></div>
+    <div id="mockList"></div>
+  </section>
+  <section id="tab-exam" class="pane">
+    <h1>Exam day</h1>
+    <div class="grid2">
+    <div class="card"><h2>Night before / morning</h2><ul><li>ID + admission ticket + approved calculator (backup batteries) + snack + water.</li><li>Know your Bluebook login. Test the app opens.</li><li>Sleep &gt; extra drill. No new content after 9pm.</li><li>Breakfast + arrive 30 min early. Bathroom before check-in.</li></ul></div>
+    <div class="card"><h2>In the room</h2><ul><li>RW: 1 pass, flag long ones, never &gt;90s on one Q in Module 1 (you need Hard Module 2).</li><li>Math: Desmos graphing tab by default; check degrees/radians before trig.</li><li>Flag + move on; return with 5 min left. Guess every blank.</li><li>SPR: no negative exponents confusion — enter <code>3/8</code> or <code>.375</code>, never <code>3 / 8 spaces</code> issue; preview your entry.</li></ul></div>
+    </div>
+    <div class="card"><h2>Pacing card (copy to paper)</h2><p>RW Module: Q1–27, 32 min → 10 min left = Q19. Math Module: Q1–22, 35 min → 10 min left = Q16. If behind, drop the longest stem, bank the quick wins, come back.</p></div>
+  </section>
+</main>
+<footer><p>Independent study tool. Not affiliated with College Board. All drill questions are original DSAT-style items.</p></footer>
+<script src="content/rw-types.js"></script>
+<script src="content/math-types.js"></script>
+<script src="content/questions-rw.js"></script>
+<script src="content/questions-math.js"></script>
+<script src="content/flashcards.js"></script>
+<script src="content/traps.js"></script>
+<script src="content/desmos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
